@@ -1,0 +1,54 @@
+:root {
+  --rose-50: #fff1f2;
+  --rose-100: #ffe4e6;
+  --rose-500: #e07a5f; /* terracotta-like coral */
+  --sand: #eadbcb;
+  --sky: #cfe8ff;
+  --ink: #1f2937;
+  --shadow-strong: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+}
+
+html:focus-within { scroll-behavior: smooth; }
+
+/******************
+  Decorative blobs
+*******************/
+.blob { position: absolute; border-radius: 32px; opacity: 0.6; filter: blur(0.3px); box-shadow: var(--shadow-strong); }
+.blob-rose { right: 22%; top: 36%; width: 180px; height: 140px; background: #f4cbc0; transform: rotate(8deg); z-index: 0; }
+.blob-sand { left: 30%; bottom: 6%; width: 220px; height: 160px; background: var(--sand); transform: rotate(-12deg); z-index: 0; }
+.blob-sky { right: 6%; bottom: 18%; width: 120px; height: 120px; background: var(--sky); transform: rotate(18deg); z-index: 0; }
+
+/******************
+  Asymmetric layouts
+*******************/
+.grid-auto-flow-unbalanced { display: grid; grid-template-columns: 1fr 0.6fr 1fr; gap: 18px; align-items: start; }
+.grid-auto-flow-unbalanced .card { min-height: 140px; }
+.grid-auto-flow-unbalanced .bump-up { transform: translateY(-12px); }
+.grid-auto-flow-unbalanced .bump-down { transform: translateY(16px); }
+.grid-auto-flow-unbalanced .tilt-right { transform: rotate(0.8deg); }
+
+.magazine-rows { display: grid; grid-template-columns: 1.2fr 0.8fr 1fr; gap: 18px; align-items: stretch; }
+.quote-card { background: #fff; border: 1px solid #eee; border-radius: 18px; padding: 18px; box-shadow: var(--shadow-strong); }
+.quote-card p { color: #374151; font-size: 0.975rem; line-height: 1.45; }
+.quote-card cite { display: block; margin-top: 10px; color: #6b7280; font-weight: 600; font-style: normal; }
+.quote-card.accent { background: #fff7ed; border-color: #fed7aa; }
+
+.info-card { width: 260px; min-height: 120px; transition: transform 220ms ease, box-shadow 220ms ease; }
+.info-card:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(0,0,0,0.08); }
+.hide-scrollbar { scrollbar-width: none; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Accessibility and motion */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within { scroll-behavior: auto; }
+  .info-card { transition: none; }
+}
+
+/* Buttons sizing on small screens */
+.btn-primary, .btn-secondary, .btn-ghost { min-height: 44px; }
+
+/* Utilities */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* App footer year */
+#year, #year-app { font-variant-numeric: tabular-nums; }
